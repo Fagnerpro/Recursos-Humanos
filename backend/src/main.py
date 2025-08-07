@@ -16,6 +16,10 @@ import base64
 from datetime import datetime
 from advanced_voice_analysis import analyze_interview_audio
 
+from src.routes.health import bp as health_bp
+
+
+
 app = Flask(__name__)
 CORS(app)
 
