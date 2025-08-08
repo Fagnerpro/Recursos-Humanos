@@ -14,7 +14,7 @@ import tempfile
 import io
 import base64
 from datetime import datetime
-from advanced_voice_analysis import analyze_interview_audio
+from src.utils.advanced_voice_analysis import analyze_interview_audio
 
 
 app = Flask(__name__)
@@ -414,3 +414,5 @@ if __name__ == '__main__':
     
     app.run(host='0.0.0.0', port=5000, debug=True)
 
+from src.routes.interviews import bp as interviews_bp
+app.register_blueprint(interviews_bp)
