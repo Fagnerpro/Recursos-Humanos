@@ -2,3 +2,7 @@
 # bloqueios anti-resíduo
 /Recursos-Humanos
 *.patch
+
+# bloqueios anti-resíduo
+/Recursos-Humanos
+*.patch
