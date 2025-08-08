@@ -16,12 +16,14 @@ import base64
 from datetime import datetime
 from advanced_voice_analysis import analyze_interview_audio
 
-from src.routes.health import bp as health_bp
-
-
 
 app = Flask(__name__)
 CORS(app)
+
+from src.routes.health import bp as health_bp
+app.register_blueprint(health_bp)
+
+
 
 # Configuração OpenAI
 openai.api_key = os.getenv('OPENAI_API_KEY')
