@@ -1,3 +1,6 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
 /* @import "tailwindcss"; */
 
 @custom-variant dark (&:is(.dark *));
@@ -293,4 +296,5 @@
     @apply bg-blue-50 text-blue-700 border-blue-200;
   }
 }
+
 
