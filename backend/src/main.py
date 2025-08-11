@@ -20,6 +20,30 @@ from src.utils.advanced_voice_analysis import analyze_interview_audio
 app = Flask(__name__)
 CORS(app)
 
+# === DB + Migrate ============================================================
+import os
+from flask_migrate import Migrate
+from src.models import db  # o "db = SQLAlchemy()" já está definido em src/models/__init__.py (ou similar)
+
+# URL do banco: usa variável de ambiente (Docker .env) ou cai para SQLite local
+app.config['SQLALCHEMY_DATABASE_URI'] = (
+    os.getenv('DATABASE_URL', 'sqlite:///app.db').replace('postgres://', 'postgresql://')
+)
+app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
+
+# Inicializa o SQLAlchemy no app
+db.init_app(app)
+
+# Garanta que TODOS os models sejam importados para o metadata ficar visível ao Alembic
+# (ajuste o caminho conforme sua estrutura real)
+with app.app_context():
+    import src.models  # noqa: F401
+
+# Ativa o Flask-Migrate (cria os comandos "flask db ...")
+migrate = Migrate(app, db)
+# ============================================================================ 
+
+
 from src.routes.health import bp as health_bp
 app.register_blueprint(health_bp)
 
