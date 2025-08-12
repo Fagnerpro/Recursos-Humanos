@@ -1,1 +1,2 @@
-# src package marker. Do NOT import models here to avoid import loops at app startup.
+# Mantido propositalmente vazio para evitar imports no topo que causam ciclos.
+__all__ = []
