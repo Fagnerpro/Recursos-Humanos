@@ -1,4 +1,4 @@
-version: '3.8'
+
 
 services:
   # Banco de Dados PostgreSQL
@@ -38,6 +38,7 @@ services:
       dockerfile: Dockerfile
     container_name: assistente_rh_backend
     environment:
+      - ALLOW_SEED=false
       - FLASK_ENV=production
       - DATABASE_URL=postgresql://assistente_rh_user:${DB_PASSWORD:-secure_password_123}@postgres:5432/assistente_rh
       - REDIS_URL=redis://:${REDIS_PASSWORD:-redis_password_123}@redis:6379/0
