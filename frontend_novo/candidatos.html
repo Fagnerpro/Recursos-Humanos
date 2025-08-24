@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Candidatos - Assistente RH Enterprise</title>
+    <link rel="stylesheet" href="assets/css/enterprise.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <div class="enterprise-container">
+        <aside class="enterprise-sidebar">
+            <div class="logo-section">
+                <div class="logo-icon">
+                    <i class="fas fa-brain"></i>
+                </div>
+                <h1>ASSISTENTE RH</h1>
+                <p>Enterprise AI System</p>
+            </div>
+            
+            <nav class="nav-menu">
+                <a href="index.html" class="nav-item">
+                    <i class="fas fa-chart-pie"></i>
+                    <span>Dashboard</span>
+                </a>
+                <a href="candidatos.html" class="nav-item active">
+                    <i class="fas fa-users"></i>
+                    <span>Candidatos</span>
+                </a>
+                <a href="entrevistas.html" class="nav-item">
+                    <i class="fas fa-microphone"></i>
+                    <span>Entrevistas</span>
+                </a>
+                <a href="audio.html" class="nav-item">
+                    <i class="fas fa-headphones"></i>
+                    <span>Análise de Áudio</span>
+                </a>
+                <a href="relatorios.html" class="nav-item">
+                    <i class="fas fa-chart-line"></i>
+                    <span>Relatórios</span>
+                </a>
+                <a href="configuracoes.html" class="nav-item">
+                    <i class="fas fa-cog"></i>
+                    <span>Configurações</span>
+                </a>
+            </nav>
+        </aside>
+
+        <main class="enterprise-main">
+            <header class="enterprise-header">
+                <div class="header-content">
+                    <div class="header-title">
+                        <h1>Gestão de Candidatos</h1>
+                        <p>Sistema Inteligente de Recrutamento com IA</p>
+                    </div>
+                    <div class="header-actions">
+                        <button class="export-btn">
+                            <i class="fas fa-plus"></i>
+                            <span>Novo Candidato</span>
+                        </button>
+                    </div>
+                </div>
+            </header>
+
+            <div class="candidates-grid">
+                <div class="candidate-card">
+                    <div class="candidate-avatar">
+                        <i class="fas fa-user"></i>
+                    </div>
+                    <div class="candidate-info">
+                        <h3>João Silva</h3>
+                        <p>Desenvolvedor Full Stack</p>
+                        <div class="candidate-score">Score: <span class="score-high">92</span></div>
+                    </div>
+                    <div class="candidate-status approved">Aprovado</div>
+                </div>
+
+                <div class="candidate-card">
+                    <div class="candidate-avatar">
+                        <i class="fas fa-user"></i>
+                    </div>
+                    <div class="candidate-info">
+                        <h3>Maria Santos</h3>
+                        <p>UX/UI Designer</p>
+                        <div class="candidate-score">Score: <span class="score-high">88</span></div>
+                    </div>
+                    <div class="candidate-status pending">Em Análise</div>
+                </div>
+
+                <div class="candidate-card">
+                    <div class="candidate-avatar">
+                        <i class="fas fa-user"></i>
+                    </div>
+                    <div class="candidate-info">
+                        <h3>Pedro Costa</h3>
+                        <p>Data Scientist</p>
+                        <div class="candidate-score">Score: <span class="score-medium">76</span></div>
+                    </div>
+                    <div class="candidate-status approved">Aprovado</div>
+                </div>
+            </div>
+
+            <div class="success-banner">
+                <div class="success-icon">
+                    <i class="fas fa-users"></i>
+                </div>
+                <div class="success-content">
+                    <h3>Sistema de Candidatos Funcionando!</h3>
+                    <p>Gestão inteligente com análise de perfil por IA. Total de 1.247 candidatos cadastrados.</p>
+                </div>
+            </div>
+        </main>
+    </div>
+</body>
+</html>

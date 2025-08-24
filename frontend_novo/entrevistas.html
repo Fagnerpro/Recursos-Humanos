@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Entrevistas - Assistente RH Enterprise</title>
+    <link rel="stylesheet" href="assets/css/enterprise.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <div class="enterprise-container">
+        <aside class="enterprise-sidebar">
+            <div class="logo-section">
+                <div class="logo-icon">
+                    <i class="fas fa-brain"></i>
+                </div>
+                <h1>ASSISTENTE RH</h1>
+                <p>Enterprise AI System</p>
+            </div>
+            
+            <nav class="nav-menu">
+                <a href="index.html" class="nav-item">
+                    <i class="fas fa-chart-pie"></i>
+                    <span>Dashboard</span>
+                </a>
+                <a href="candidatos.html" class="nav-item">
+                    <i class="fas fa-users"></i>
+                    <span>Candidatos</span>
+                </a>
+                <a href="entrevistas.html" class="nav-item active">
+                    <i class="fas fa-microphone"></i>
+                    <span>Entrevistas</span>
+                </a>
+                <a href="audio.html" class="nav-item">
+                    <i class="fas fa-headphones"></i>
+                    <span>Análise de Áudio</span>
+                </a>
+                <a href="relatorios.html" class="nav-item">
+                    <i class="fas fa-chart-line"></i>
+                    <span>Relatórios</span>
+                </a>
+                <a href="configuracoes.html" class="nav-item">
+                    <i class="fas fa-cog"></i>
+                    <span>Configurações</span>
+                </a>
+            </nav>
+        </aside>
+
+        <main class="enterprise-main">
+            <header class="enterprise-header">
+                <div class="header-content">
+                    <div class="header-title">
+                        <h1>Gestão de Entrevistas</h1>
+                        <p>Agendamento e Acompanhamento de Entrevistas</p>
+                    </div>
+                    <div class="header-actions">
+                        <button class="export-btn">
+                            <i class="fas fa-calendar-plus"></i>
+                            <span>Agendar Entrevista</span>
+                        </button>
+                    </div>
+                </div>
+            </header>
+
+            <div class="interviews-timeline">
+                <div class="interview-item">
+                    <div class="interview-time">09:00</div>
+                    <div class="interview-card">
+                        <h3>João Silva - Desenvolvedor Full Stack</h3>
+                        <p><i class="fas fa-video"></i> Entrevista Online</p>
+                        <div class="interview-status scheduled">Agendada</div>
+                    </div>
+                </div>
+
+                <div class="interview-item">
+                    <div class="interview-time">14:30</div>
+                    <div class="interview-card">
+                        <h3>Maria Santos - UX/UI Designer</h3>
+                        <p><i class="fas fa-microphone"></i> Entrevista por Áudio</p>
+                        <div class="interview-status in-progress">Em Andamento</div>
+                    </div>
+                </div>
+
+                <div class="interview-item">
+                    <div class="interview-time">16:00</div>
+                    <div class="interview-card">
+                        <h3>Pedro Costa - Data Scientist</h3>
+                        <p><i class="fas fa-users"></i> Entrevista Presencial</p>
+                        <div class="interview-status scheduled">Agendada</div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="success-banner">
+                <div class="success-icon">
+                    <i class="fas fa-calendar-check"></i>
+                </div>
+                <div class="success-content">
+                    <h3>Sistema de Entrevistas Ativo!</h3>
+                    <p>8 entrevistas agendadas para hoje. Taxa de comparecimento: 94%</p>
+                </div>
+            </div>
+        </main>
+    </div>
+</body>
+</html>

@@ -18,7 +18,7 @@ class Config:
     )
     
     # JWT
-    JWT_SECRET_KEY = os.getenv('JWT_SECRET_KEY', 'jwt-secret-key-assistente-rh-2024')
+    JWT_SECRET_ = os.getenv('JWT_SECRET_KEY', 'jwt-secret-key-assistente-rh-2024')
     JWT_ACCESS_TOKEN_EXPIRES = timedelta(hours=24)
     JWT_REFRESH_TOKEN_EXPIRES = timedelta(days=30)
     
