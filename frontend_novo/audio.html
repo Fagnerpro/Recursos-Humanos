@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Análise de Áudio IA - Assistente RH Enterprise</title>
     <link rel="stylesheet" href="assets/css/enterprise.css">
+    <link rel="stylesheet" href="assets/css/pages.css">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 </head>
@@ -55,14 +56,44 @@
                         <p>🚀 DIFERENCIAL COMPETITIVO - Análise Inteligente de Entrevistas</p>
                     </div>
                     <div class="header-actions">
-                        <button class="export-btn">
-                            <i class="fas fa-upload"></i>
-                            <span>Upload Áudio</span>
+                        <div id="backend-status" class="status-indicator">
+                            <i class="fas fa-spinner fa-spin"></i> Conectando...
+                        </div>
+                        <button class="export-btn" id="new-interview">
+                            <i class="fas fa-plus"></i>
+                            <span>Nova Entrevista</span>
                         </button>
                     </div>
                 </div>
             </header>
 
+            <!-- Seção de Controles de Entrevista -->
+            <div class="interview-controls">
+                <div class="control-card">
+                    <h3><i class="fas fa-microphone"></i> Simulação de Entrevista</h3>
+                    <p>Demonstre a análise de áudio com IA em tempo real</p>
+                    <button class="simulate-btn" id="simulate-interview">
+                        <i class="fas fa-play"></i>
+                        <span>Simular Entrevista Completa</span>
+                    </button>
+                </div>
+                
+                <div class="control-card">
+                    <h3><i class="fas fa-upload"></i> Upload de Áudio</h3>
+                    <p>Faça upload de um arquivo de áudio para análise</p>
+                    <button class="upload-btn" id="upload-audio">
+                        <i class="fas fa-cloud-upload-alt"></i>
+                        <span>Selecionar Arquivo</span>
+                    </button>
+                </div>
+            </div>
+
+            <!-- Resultado da Análise (será preenchido dinamicamente ) -->
+            <div id="interview-result" class="interview-result-container">
+                <!-- Resultado será inserido aqui pelo JavaScript -->
+            </div>
+
+            <!-- Análise Estática (exemplo) -->
             <div class="audio-analysis-grid">
                 <div class="analysis-card">
                     <div class="analysis-header">
@@ -122,7 +153,7 @@
                 </div>
             </div>
 
-            <div class="success-banner" style="background: linear-gradient(135deg, #fef3c7 0%, #fde68a 100% ); border-color: #f59e0b;">
+            <div class="success-banner" style="background: linear-gradient(135deg, #fef3c7 0%, #fde68a 100%); border-color: #f59e0b;">
                 <div class="success-icon" style="background: #f59e0b;">
                     <i class="fas fa-robot"></i>
                 </div>
@@ -133,5 +164,8 @@
             </div>
         </main>
     </div>
+
+    
+    <script src="assets/js/simple-simulator.js"></script>
 </body>
 </html>

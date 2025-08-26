@@ -19,7 +19,7 @@
    - URL: http://localhost:8080/audio.html
    - Score IA: 85 pontos
    - Recomendação: APROVAR
-   - DESTAQUE: "Tecnologia exclusiva!"
+   - DESTAQUE: "Tecnologia exclusiva no mercado!"
 
 4. Relatórios Inteligentes:
    - URL: http://localhost:8080/relatorios.html
@@ -33,5 +33,5 @@
 - ROI comprovado
 
 ## FRASE DE IMPACTO:
-"Sistema pronto para receber investimento de 3000+ BTC.
-Diferencial competitivo único no mercado!"
+"Sistema enterprise com diferencial competitivo único.
+Tecnologia de IA exclusiva para análise de entrevistas!"
