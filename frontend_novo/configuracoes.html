@@ -1,0 +1,258 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Configurações - Assistente RH Enterprise</title>
+    <link rel="stylesheet" href="assets/css/enterprise.css">
+    <link rel="stylesheet" href="assets/css/pages.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <div class="enterprise-container">
+        <aside class="enterprise-sidebar">
+            <div class="logo-section">
+                <div class="logo-icon">
+                    <i class="fas fa-brain"></i>
+                </div>
+                <h1>ASSISTENTE RH</h1>
+                <p>Enterprise AI System</p>
+            </div>
+            
+            <nav class="nav-menu">
+                <a href="index.html" class="nav-item">
+                    <i class="fas fa-chart-pie"></i>
+                    <span>Dashboard</span>
+                </a>
+                <a href="candidatos.html" class="nav-item">
+                    <i class="fas fa-users"></i>
+                    <span>Candidatos</span>
+                </a>
+                <a href="entrevistas.html" class="nav-item">
+                    <i class="fas fa-microphone"></i>
+                    <span>Entrevistas</span>
+                </a>
+                <a href="audio.html" class="nav-item">
+                    <i class="fas fa-headphones"></i>
+                    <span>Análise de Áudio</span>
+                </a>
+                <a href="relatorios.html" class="nav-item">
+                    <i class="fas fa-chart-line"></i>
+                    <span>Relatórios</span>
+                </a>
+                <a href="configuracoes.html" class="nav-item active">
+                    <i class="fas fa-cog"></i>
+                    <span>Configurações</span>
+                </a>
+            </nav>
+        </aside>
+
+        <main class="enterprise-main">
+            <header class="enterprise-header">
+                <div class="header-content">
+                    <div class="header-title">
+                        <h1>Configurações do Sistema</h1>
+                        <p>Personalização e Configurações Avançadas</p>
+                    </div>
+                    <div class="header-actions">
+                        <button class="export-btn" onclick="saveSettings( )">
+                            <i class="fas fa-save"></i>
+                            <span>Salvar Configurações</span>
+                        </button>
+                    </div>
+                </div>
+            </header>
+
+            <div class="settings-sections">
+                <div class="settings-card">
+                    <div class="settings-header">
+                        <h3><i class="fas fa-robot"></i> Configurações de IA</h3>
+                    </div>
+                    <div class="settings-content">
+                        <div class="setting-item">
+                            <label>Sensibilidade da Análise de Áudio</label>
+                            <div class="setting-control">
+                                <input type="range" min="1" max="10" value="8" class="slider">
+                                <span class="setting-value">Alta (8/10)</span>
+                            </div>
+                        </div>
+                        
+                        <div class="setting-item">
+                            <label>Modelo de IA Utilizado</label>
+                            <div class="setting-control">
+                                <select class="setting-select">
+                                    <option value="gpt4">GPT-4 Turbo (Recomendado)</option>
+                                    <option value="gpt3">GPT-3.5 Turbo</option>
+                                    <option value="claude">Claude 3</option>
+                                </select>
+                            </div>
+                        </div>
+                        
+                        <div class="setting-item">
+                            <label>Análise Automática de Áudio</label>
+                            <div class="setting-control">
+                                <label class="toggle">
+                                    <input type="checkbox" checked>
+                                    <span class="toggle-slider"></span>
+                                </label>
+                                <span class="setting-description">Ativado</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="settings-card">
+                    <div class="settings-header">
+                        <h3><i class="fas fa-shield-alt"></i> Segurança e Privacidade</h3>
+                    </div>
+                    <div class="settings-content">
+                        <div class="setting-item">
+                            <label>Conformidade LGPD</label>
+                            <div class="setting-control">
+                                <label class="toggle">
+                                    <input type="checkbox" checked disabled>
+                                    <span class="toggle-slider"></span>
+                                </label>
+                                <span class="setting-description">Sempre Ativo</span>
+                            </div>
+                        </div>
+                        
+                        <div class="setting-item">
+                            <label>Criptografia de Dados</label>
+                            <div class="setting-control">
+                                <select class="setting-select">
+                                    <option value="aes256">AES-256 (Máxima Segurança)</option>
+                                    <option value="aes128">AES-128</option>
+                                </select>
+                            </div>
+                        </div>
+                        
+                        <div class="setting-item">
+                            <label>Backup Automático</label>
+                            <div class="setting-control">
+                                <select class="setting-select">
+                                    <option value="daily">Diário</option>
+                                    <option value="weekly">Semanal</option>
+                                    <option value="monthly">Mensal</option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="settings-card">
+                    <div class="settings-header">
+                        <h3><i class="fas fa-bell"></i> Notificações</h3>
+                    </div>
+                    <div class="settings-content">
+                        <div class="setting-item">
+                            <label>Notificações de Novos Candidatos</label>
+                            <div class="setting-control">
+                                <label class="toggle">
+                                    <input type="checkbox" checked>
+                                    <span class="toggle-slider"></span>
+                                </label>
+                                <span class="setting-description">Ativado</span>
+                            </div>
+                        </div>
+                        
+                        <div class="setting-item">
+                            <label>Alertas de Entrevistas</label>
+                            <div class="setting-control">
+                                <label class="toggle">
+                                    <input type="checkbox" checked>
+                                    <span class="toggle-slider"></span>
+                                </label>
+                                <span class="setting-description">Ativado</span>
+                            </div>
+                        </div>
+                        
+                        <div class="setting-item">
+                            <label>Relatórios Automáticos</label>
+                            <div class="setting-control">
+                                <select class="setting-select">
+                                    <option value="weekly">Semanal</option>
+                                    <option value="monthly">Mensal</option>
+                                    <option value="quarterly">Trimestral</option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="success-banner">
+                <div class="success-icon">
+                    <i class="fas fa-cogs"></i>
+                </div>
+                <div class="success-content">
+                    <h3>Sistema Configurado para Máxima Performance!</h3>
+                    <p>Configurações otimizadas para empresas. Segurança LGPD, IA avançada e backup automático ativados.</p>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <script>
+        function saveSettings() {
+            const btn = event.target.closest('.export-btn');
+            const originalText = btn.innerHTML;
+            
+            btn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> <span>Salvando...</span>';
+            btn.disabled = true;
+            
+            setTimeout(() => {
+                btn.innerHTML = '<i class="fas fa-check"></i> <span>Salvo!</span>';
+                
+                setTimeout(() => {
+                    btn.innerHTML = originalText;
+                    btn.disabled = false;
+                    
+                    // Mostrar toast de sucesso
+                    showToast('Configurações salvas com sucesso!', 'success');
+                }, 2000);
+            }, 2000);
+        }
+        
+        function showToast(message, type) {
+            const toast = document.createElement('div');
+            toast.className = 'toast';
+            toast.innerHTML = '<i class="fas fa-check-circle"></i> ' + message;
+            toast.style.cssText = 
+                position: fixed;
+                top: 20px;
+                right: 20px;
+                background: #10b981;
+                color: white;
+                padding: 1rem 1.5rem;
+                border-radius: 12px;
+                box-shadow: 0 10px 25px rgba(16, 185, 129, 0.3);
+                z-index: 10000;
+                animation: slideIn 0.3s ease-out;
+            ;
+            
+            document.body.appendChild(toast);
+            
+            setTimeout(() => {
+                toast.style.animation = 'slideOut 0.3s ease-in forwards';
+                setTimeout(() => document.body.removeChild(toast), 300);
+            }, 3000);
+        }
+        
+        // Adicionar estilos de animação
+        const style = document.createElement('style');
+        style.textContent = 
+            @keyframes slideIn {
+                from { transform: translateX(100%); opacity: 0; }
+                to { transform: translateX(0); opacity: 1; }
+            }
+            @keyframes slideOut {
+                from { transform: translateX(0); opacity: 1; }
+                to { transform: translateX(100%); opacity: 0; }
+            }
+        ;
+        document.head.appendChild(style);
+    </script>
+</body>
+</html>

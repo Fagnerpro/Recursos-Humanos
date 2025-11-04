@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Relatórios - Assistente RH Enterprise</title>
+    <link rel="stylesheet" href="assets/css/enterprise.css">
+    <link rel="stylesheet" href="assets/css/pages.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <div class="enterprise-container">
+        <aside class="enterprise-sidebar">
+            <div class="logo-section">
+                <div class="logo-icon">
+                    <i class="fas fa-brain"></i>
+                </div>
+                <h1>ASSISTENTE RH</h1>
+                <p>Enterprise AI System</p>
+            </div>
+            
+            <nav class="nav-menu">
+                <a href="index.html" class="nav-item">
+                    <i class="fas fa-chart-pie"></i>
+                    <span>Dashboard</span>
+                </a>
+                <a href="candidatos.html" class="nav-item">
+                    <i class="fas fa-users"></i>
+                    <span>Candidatos</span>
+                </a>
+                <a href="entrevistas.html" class="nav-item">
+                    <i class="fas fa-microphone"></i>
+                    <span>Entrevistas</span>
+                </a>
+                <a href="audio.html" class="nav-item">
+                    <i class="fas fa-headphones"></i>
+                    <span>Análise de Áudio</span>
+                </a>
+                <a href="relatorios.html" class="nav-item active">
+                    <i class="fas fa-chart-line"></i>
+                    <span>Relatórios</span>
+                </a>
+                <a href="configuracoes.html" class="nav-item">
+                    <i class="fas fa-cog"></i>
+                    <span>Configurações</span>
+                </a>
+            </nav>
+        </aside>
+
+        <main class="enterprise-main">
+            <header class="enterprise-header">
+                <div class="header-content">
+                    <div class="header-title">
+                        <h1>Relatórios Executivos</h1>
+                        <p>Análises Avançadas e Insights de Negócio</p>
+                    </div>
+                    <div class="header-actions">
+                        <button class="export-btn" onclick="generateReport( )">
+                            <i class="fas fa-file-pdf"></i>
+                            <span>Gerar Relatório</span>
+                        </button>
+                    </div>
+                </div>
+            </header>
+
+            <div class="reports-grid">
+                <div class="report-card">
+                    <div class="report-icon">
+                        <i class="fas fa-chart-bar"></i>
+                    </div>
+                    <div class="report-content">
+                        <h3>Relatório Mensal</h3>
+                        <p>Análise completa de performance do mês</p>
+                        <div class="report-stats">
+                            <span class="stat">📊 1.247 candidatos</span>
+                            <span class="stat">✅ 73.2% aprovação</span>
+                        </div>
+                    </div>
+                    <button class="report-download">
+                        <i class="fas fa-download"></i>
+                    </button>
+                </div>
+
+                <div class="report-card">
+                    <div class="report-icon">
+                        <i class="fas fa-users"></i>
+                    </div>
+                    <div class="report-content">
+                        <h3>Análise de Candidatos</h3>
+                        <p>Perfil detalhado dos candidatos por área</p>
+                        <div class="report-stats">
+                            <span class="stat">🎯 Score médio: 82.5</span>
+                            <span class="stat">📈 +12% crescimento</span>
+                        </div>
+                    </div>
+                    <button class="report-download">
+                        <i class="fas fa-download"></i>
+                    </button>
+                </div>
+
+                <div class="report-card">
+                    <div class="report-icon">
+                        <i class="fas fa-microphone"></i>
+                    </div>
+                    <div class="report-content">
+                        <h3>Análise de Áudio IA</h3>
+                        <p>Insights das entrevistas por áudio</p>
+                        <div class="report-stats">
+                            <span class="stat">🤖 94% precisão IA</span>
+                            <span class="stat">⚡ 60% mais rápido</span>
+                        </div>
+                    </div>
+                    <button class="report-download">
+                        <i class="fas fa-download"></i>
+                    </button>
+                </div>
+
+                <div class="report-card">
+                    <div class="report-icon">
+                        <i class="fas fa-trophy"></i>
+                    </div>
+                    <div class="report-content">
+                        <h3>ROI do Sistema</h3>
+                        <p>Retorno sobre investimento em IA</p>
+                        <div class="report-stats">
+                            <span class="stat">💰 40% redução custos</span>
+                            <span class="stat">🚀 300% mais eficiente</span>
+                        </div>
+                    </div>
+                    <button class="report-download">
+                        <i class="fas fa-download"></i>
+                    </button>
+                </div>
+            </div>
+
+            <div class="success-banner">
+                <div class="success-icon">
+                    <i class="fas fa-chart-line"></i>
+                </div>
+                <div class="success-content">
+                    <h3>Sistema de Relatórios Inteligente!</h3>
+                    <p>Relatórios automáticos com insights de IA. Economia de 15 horas/semana na geração de relatórios.</p>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <script>
+        function generateReport() {
+            const btn = event.target.closest('.export-btn');
+            const originalText = btn.innerHTML;
+            
+            btn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> <span>Gerando...</span>';
+            btn.disabled = true;
+            
+            setTimeout(() => {
+                btn.innerHTML = '<i class="fas fa-check"></i> <span>Relatório Gerado!</span>';
+                
+                setTimeout(() => {
+                    btn.innerHTML = originalText;
+                    btn.disabled = false;
+                    
+                    // Simular download
+                    const link = document.createElement('a');
+                    link.href = 'data:text/plain;charset=utf-8,Relatório Executivo - Assistente RH Enterprise\\n\\nResumo Executivo:\\n- Total de Candidatos: 1.247\\n- Taxa de Aprovação: 73.2%\\n- Score Médio: 82.5\\n- ROI: 300% de eficiência\\n\\nSistema funcionando perfeitamente!';
+                    link.download = 'relatorio-assistente-rh.txt';
+                    link.click();
+                }, 2000);
+            }, 3000);
+        }
+    </script>
+</body>
+</html>

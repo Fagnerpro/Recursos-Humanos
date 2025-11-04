@@ -1,7 +1,4 @@
-version: '3.8'
-
 services:
-  # Banco de Dados PostgreSQL
   postgres:
     image: postgres:15-alpine
     container_name: assistente_rh_db
@@ -14,11 +11,9 @@ services:
       - ../database/migrations:/docker-entrypoint-initdb.d
     ports:
       - "5432:5432"
-    networks:
-      - assistente_rh_network
+    networks: [assistente_rh_network]
     restart: unless-stopped
 
-  # Cache Redis
   redis:
     image: redis:7-alpine
     container_name: assistente_rh_redis
@@ -27,74 +22,75 @@ services:
       - redis_data:/data
     ports:
       - "6379:6379"
-    networks:
-      - assistente_rh_network
+    networks: [assistente_rh_network]
     restart: unless-stopped
 
-  # Backend API
   backend:
     build:
       context: ../backend
       dockerfile: Dockerfile
     container_name: assistente_rh_backend
     environment:
-      - FLASK_ENV=production
-      - DATABASE_URL=postgresql://assistente_rh_user:${DB_PASSWORD:-secure_password_123}@postgres:5432/assistente_rh
-      - REDIS_URL=redis://:${REDIS_PASSWORD:-redis_password_123}@redis:6379/0
-      - OPENAI_API_KEY=${OPENAI_API_KEY}
-      - JWT_SECRET_KEY=${JWT_SECRET_KEY:-super_secret_jwt_key_change_in_production}
+      # App/Flask
+      PYTHONPATH: backend
+      FLASK_APP: src.main:app
+      FLASK_ENV: production
+      # Banco/Cache
+      DATABASE_URL: postgresql://assistente_rh_user:${DB_PASSWORD:-secure_password_123}@postgres:5432/assistente_rh
+      REDIS_URL: redis://:${REDIS_PASSWORD:-redis_password_123}@redis:6379/0
+      # Segurança/Integracões
+      OPENAI_API_KEY: ${OPENAI_API_KEY}
+      JWT_SECRET: ${JWT_SECRET_KEY:-super_secret_jwt_key_change_in_production}
+      # Dev-ops
+      ALLOW_SEED: "true"                # só em DEV
+      WEB_CONCURRENCY: "1"
+      GUNICORN_CMD_ARGS: "--workers 1 --threads 1 --timeout 120 --log-level info --access-logfile - --error-logfile - --bind 0.0.0.0:5000"
     volumes:
       - ../backend:/app
       - backend_uploads:/app/uploads
     ports:
       - "5000:5000"
-    depends_on:
-      - postgres
-      - redis
-    networks:
-      - assistente_rh_network
+    depends_on: [postgres, redis]
+    networks: [assistente_rh_network]
     restart: unless-stopped
 
-  # Worker Celery para processamento assíncrono
   celery_worker:
     build:
       context: ../backend
       dockerfile: Dockerfile
     container_name: assistente_rh_worker
-    command: celery -A src.main.celery worker --loglevel=info
+    command: sh -lc "export PYTHONPATH=backend; celery -A src.main.celery worker --loglevel=info"
     environment:
-      - FLASK_ENV=production
-      - DATABASE_URL=postgresql://assistente_rh_user:${DB_PASSWORD:-secure_password_123}@postgres:5432/assistente_rh
-      - REDIS_URL=redis://:${REDIS_PASSWORD:-redis_password_123}@redis:6379/0
-      - OPENAI_API_KEY=${OPENAI_API_KEY}
+      PYTHONPATH: backend
+      FLASK_APP: src.main:app
+      FLASK_ENV: production
+      DATABASE_URL: postgresql://assistente_rh_user:${DB_PASSWORD:-secure_password_123}@postgres:5432/assistente_rh
+      REDIS_URL: redis://:${REDIS_PASSWORD:-redis_password_123}@redis:6379/0
+      OPENAI_API_KEY: ${OPENAI_API_KEY}
+      JWT_SECRET: ${JWT_SECRET_KEY:-super_secret_jwt_key_change_in_production}
     volumes:
       - ../backend:/app
       - backend_uploads:/app/uploads
-    depends_on:
-      - postgres
-      - redis
-      - backend
-    networks:
-      - assistente_rh_network
+    depends_on: [postgres, redis, backend]
+    networks: [assistente_rh_network]
     restart: unless-stopped
 
-  # Frontend React
   frontend:
     build:
       context: ../frontend
       dockerfile: Dockerfile
     container_name: assistente_rh_frontend
     environment:
-      - REACT_APP_API_URL=http://localhost:5000
+      # Se projeto usa Vite, prefira VITE_*:
+      VITE_API_BASE: http://localhost:5000
+      # Se for CRA/React Scripts, então REACT_APP_API_URL (mantenha apenas um dos dois, conforme o seu build):
+      # REACT_APP_API_URL: http://localhost:5000
     ports:
       - "3000:3000"
-    depends_on:
-      - backend
-    networks:
-      - assistente_rh_network
+    depends_on: [backend]
+    networks: [assistente_rh_network]
     restart: unless-stopped
 
-  # Proxy Nginx
   nginx:
     image: nginx:alpine
     container_name: assistente_rh_nginx
@@ -104,20 +100,14 @@ services:
     ports:
       - "80:80"
       - "443:443"
-    depends_on:
-      - frontend
-      - backend
-    networks:
-      - assistente_rh_network
+    depends_on: [frontend, backend]
+    networks: [assistente_rh_network]
     restart: unless-stopped
 
 volumes:
-  postgres_data:
-    driver: local
-  redis_data:
-    driver: local
-  backend_uploads:
-    driver: local
+  postgres_data: {}
+  redis_data: {}
+  backend_uploads: {}
 
 networks:
   assistente_rh_network:
